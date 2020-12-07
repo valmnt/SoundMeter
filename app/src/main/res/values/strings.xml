@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">SoundMeter</string>
+    <string name="app_name" translatable="false">SoundMeter</string>
+    <string name="permission_popup_title">Accès nécessaire à la localisation</string>
+    <string name="permission_popup_ok">OK</string>
+    <string name="permission_popup_ko">Annuler</string>
 </resources>

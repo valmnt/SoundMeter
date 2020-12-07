@@ -8,7 +8,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.github.avianey.soundmeter"
+        applicationId "com.github.valmnt.soundmeter"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
