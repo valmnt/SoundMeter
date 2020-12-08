@@ -5,7 +5,9 @@ import androidx.room.*
 import com.github.valmnt.soundmeter.LocationDb.Companion.COLUMN_LAT
 import com.github.valmnt.soundmeter.LocationDb.Companion.COLUMN_LNG
 import com.github.valmnt.soundmeter.LocationDb.Companion.COLUMN_SPEED
+import com.github.valmnt.soundmeter.LocationDb.Companion.COLUMN_TIME
 import com.github.valmnt.soundmeter.LocationDb.Companion.TABLE_LOCATION
+import java.util.*
 
 @Entity(tableName = TABLE_LOCATION)
 data class LocationEntity(
@@ -15,7 +17,8 @@ data class LocationEntity(
 
     @ColumnInfo(name = COLUMN_LAT) val lat: Double,
     @ColumnInfo(name = COLUMN_LNG) val lng: Double,
-    @ColumnInfo(name = COLUMN_SPEED) val speed: Double
+    @ColumnInfo(name = COLUMN_SPEED) val speed: Double,
+    @ColumnInfo(name = COLUMN_TIME) val time: Date
 )
 
 @Dao
@@ -37,6 +40,7 @@ abstract class LocationDb: RoomDatabase() {
         const val COLUMN_LAT = "lat"
         const val COLUMN_LNG = "lng"
         const val COLUMN_SPEED = "speed"
+        const val COLUMN_TIME = "tmp"
     }
 
     abstract fun locationDao(): LocationDao
