@@ -21,5 +21,4 @@ class SoundMeterApplication: Application() {
                     .createNotificationChannel(NotificationChannel(NOTIFICATION_CHANNEL, "channel name", NotificationManager.IMPORTANCE_HIGH))
         }
     }
-
 }

@@ -6,7 +6,6 @@ import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.location.Location
 import android.os.Bundle
 import android.os.Vibrator
-import android.preference.PreferenceManager
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
@@ -14,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.preference.PreferenceManager
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
 
@@ -23,7 +23,7 @@ class SoundMeterActivity: AppCompatActivity() {
         const val POPUP_DISPLAYED = "popupAlreadyDisplayed"
         const val TAG_PERMISSION_FRAGMENT = "permissionDialogFragment"
         const val REQUEST_CODE_PERMISSION = 1
-        const val LOCATION_UPDATE_MS = 1_000L
+        const val LOCATION_UPDATE_MS = 10_000L
         const val LOCATION_UPDATE_RADIUS = 100f
     }
 
@@ -46,17 +46,6 @@ class SoundMeterActivity: AppCompatActivity() {
             .putInt(SoundMeterSettings.SETTING_SPEED, 60)
             .apply()
          */
-
-        val threshold =
-            PreferenceManager.getDefaultSharedPreferences(this)
-                .getInt(SoundMeterSettings.SETTING_SPEED, resources.getInteger(R.integer.speed_default))
-        if (location.speed > threshold) {
-            // threshold reached
-            (getSystemService(VIBRATOR_SERVICE) as Vibrator).apply {
-                vibrate(500)
-            }
-            Toast.makeText(this, "vibrate", Toast.LENGTH_SHORT).show()
-        }
     }
 
     var locationDisposable: Disposable? = null
